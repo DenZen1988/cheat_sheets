@@ -14,4 +14,9 @@ Feel free to contribute!
 
 1. Create a new branch
 2. Add your content
-3. Create a Pull request
+3. Add yourself to the contributors list below!
+4. Create a Pull request
+
+## Contributors list
+
+* [DenZen1988](https://github.com/DenZen1988) (Owner)
