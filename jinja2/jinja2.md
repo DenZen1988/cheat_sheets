@@ -2,6 +2,13 @@
 
 ## Table of content
 
+* [Conditions & Loops](#conditions--loops)
+  * [If, Else & Elif](#if-else--elif)
+  * [Loops](#loops)
+  * [Combine Loops & Conditions](#combine-loops--conditions)
+* [Joining & Sorting](#joining--sorting)
+  * [Joining](#joining)
+  * [Sorting](#sorting)
 * [Whitespaces](#whitespaces)
   * [Default Behavior](#default-behavior)
   * [Strip Whitespaces Before](#strip-whitespaces-before)
@@ -12,6 +19,96 @@
 * [Variables](#variables)
   * [Combine Variables](#combine-variables)
   * [Appending Variables](#appending-variables)
+
+## Conditions & Loops
+
+### If, Else & Elif
+
+In Jinja2 templates it is possible to use standard if-else statements like this:
+
+```jinja2
+{% if weather == 'rain' %}
+WEATHER='sucks'
+{% else %}
+WEATHER='fine'
+{% endif %}
+```
+
+If there are more than two conditions the condition can be expanded with `elif` like this:
+
+```jinja2
+{%if weather == 'rain' %}
+WEATHER='wet'
+{% elif weather == 'snow' %}
+WEATHER='cold'
+{% weather == 'sunny' %}
+WEATHER='warm'
+{% else %}
+WEATHER='unknown'
+{% endif %}
+```
+
+### Loops
+
+If you have an array like this:
+
+```yaml
+apt_packages:
+  - vim
+  - nginx
+  - mysql
+```
+
+And you want to loop over it, you can realize it with a for-loop like this:
+
+```jinja2
+{%for package in apt_packages %}
+echo {{ package }}
+{% endfor %}
+```
+
+### Combine Loops & Conditions
+
+You can also combine conditions and loops like this:
+
+```jinja2
+{% if ansible_facts['os_family'] == 'Debian' %}
+  {% for deb_package in apt_packages %}
+    echo "Debian Package: {{ deb_package }}"
+  {% else %}
+    {% for other_package in other_packages %}
+        echo "Other Package: {{ other_package }}"
+  {% endfor %}
+{% endif %}
+```
+
+## Joining & Sorting
+
+### Joining
+
+Sometimes you need to fetch multiple values from, for example `ansible_facts`. Usually they are not really joined together and are fetched
+as an array. To be able to use these values all together it makes sense to `join` them together like this:
+
+```jinja2
+NETWORK="{{ ansible_facts.interfaces | join(' ') }}"
+```
+
+### Sorting
+
+In case you want to fetch a list of values (for example network interfaces) and you want to avoid any "drift" (random re-sorting of the output
+occasionally) it makes sense to sort the output.
+
+The following code will cause a re-order of the interfaces from time to time:
+
+```jinja2
+NETWORK="{{ ansible_facts.interfaces | join(' ') }}"
+```
+
+If you `sort` the output, the output will always be forced to be the same:
+
+```jinja2
+NETWORK="{{ ansible_facts.interfaces | sort | join(' ') }}"
+```
 
 ## Whitespaces
 
