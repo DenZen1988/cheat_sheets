@@ -6,7 +6,8 @@ This is a simple cheat sheet collection of things I use and which might come in 
 
 * [Jinja2](jinja2/jinja2.md)
 * [Markdown](markdown/markdown.md)
-* [Ansible](ansible/ansible.md) (TBD)
+* [Ansible Runtime](ansible/ansible_runtime.md)
+* [Ansible Code](ansible/ansible_code.md) - TBD
 
 ## Contributing
 

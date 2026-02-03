@@ -1,3 +1,0 @@
-# Ansible Cheat Sheet
-
-To be done...
