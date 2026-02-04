@@ -11,6 +11,7 @@
 * [Extra Options/Variables](#extra-optionsvariables)
 * [Defining Runtime Variables](#defining-runtime-variables)
   * [Runtime Variable Example](#runtime-variable-example)
+* [List all task without running the playbook](#list-all-task-without-running-the-playbook)
 
 ## Runtime Options
 
@@ -65,7 +66,7 @@ to then run it without specific options. For example after the SSH port changed 
 
 ### Runtime Variable Example
 
-To have the variable `initial_setup` defined and being used with `true` or `false` you can set the variable like this in you ansible task/playbook:
+To have the variable `initial_setup` defined and being used with `true` or `false` you can set the variable like this in your ansible task/playbook:
 
 ```yaml
 - name: Stop Playbook for SSH transition
@@ -88,3 +89,43 @@ Then call the ansible playbook with the extra option `-e "initial_setup=true"`:
 ```text
 ansible-playbook -i inventory/ playbooks/my_playbook.yml -e "ansible_port=44" -e "ansible_user=iamansible" -e "initial_setup=true"
 ```
+
+## List all task without running the playbook
+
+Sometimes you want to verify if your new task(s) will be run before you just start an ansible run. Thankfully you can simply append the option
+`--list-tasks` like this:
+
+```text
+ansible-playbook -i inventory 01_base_deployment.yml --list-tasks
+```
+
+The output will show you a list of the tasks like this:
+
+```text
+$:> ansible-playbook -i inventory 01_base_deployment.yml --list-tasks
+
+playbook: 01_base_deployment.yml
+
+  play #1 (ionos): Base Deployment IONOS Servers        TAGS: []
+    tasks:
+      base : Set base_hostname  TAGS: []
+      base : Configure Locales  TAGS: []
+      base : Create swap file   TAGS: []
+      base : Ensure swap file has correct permissions   TAGS: []
+      base : Run mkswap on the swap file        TAGS: []
+      base : Add swap to /etc/fstab     TAGS: []
+      base : Install APT Packages       TAGS: []
+      base : Install Extra APT Packages TAGS: []
+      base : Purge Unwanted APT Packages        TAGS: []
+      base : Create Users       TAGS: []
+      base : Setup Sudoers for {{ base_user }}  TAGS: []
+      base : Ensure .ssh Directory Exists       TAGS: []
+      base : Add authorized_keys        TAGS: []
+      base : Replace .bashrc File       TAGS: []
+      base : Replace bash + vim files   TAGS: []
+      base : Replace root bashrc        TAGS: []
+      base : Place root .bash_aliases   TAGS: []
+      base : Setup base_sshd_config     TAGS: []
+```
+
+Here you can now verify if all your tasks are run by the playbook as you want them.
