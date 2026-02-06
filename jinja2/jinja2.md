@@ -267,3 +267,23 @@ You can also append a single variable after a loop, just make sure to append it 
 echo {{ country }}
 {% endfor %} {{ foo }}
 ```
+
+## Using Raw so characters will not be interpreted by Jinja2
+
+Sometimes you will find edge cases by jinja interpeting characters but you do not want it to. Let's say you have a string like this:
+
+```text
+FOO=${#BAR[@]}
+```
+
+Jinja2 will now interpret this part `{#` as the start of a comment and will complain that there is no ending for that comment.
+
+To counter that you can put the whole line into a `raw` tag like this:
+
+```jinja2
+{% raw %}
+FOO=${#BAR[@]}
+{% endraw %}
+```
+
+Now the line will be placed like it should be placed.
