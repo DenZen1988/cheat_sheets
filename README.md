@@ -8,6 +8,7 @@ This is a simple cheat sheet collection of things I use and which might come in 
 * [Markdown](markdown/markdown.md)
 * [Ansible Runtime](ansible/ansible_runtime.md)
 * [Ansible Code](ansible/ansible_code.md) - TBD
+* [Ansible Variable Hierarchy](ansible/ansible_variable_hierarchy.md)
 
 ## Contributing
 
