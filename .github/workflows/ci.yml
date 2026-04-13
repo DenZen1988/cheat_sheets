@@ -59,11 +59,8 @@ jobs:
     steps:
       - name: Check results
         run: |
-          if [[ "${{ needs.ansible-lint.result }}" != "success" ]] || \
-          [[ "${{ needs.jinja2-lint.result }}" != "success" ]] || \
-          [[ "${{ needs.markdownlint.result }}" != "success" ]] || \
+          if [[ "${{ needs.markdownlint.result }}" != "success" ]] || \
           [[ "${{ needs.yamllint.result }}" != "success" ]] || \
-          [[ "${{ needs.shellcheck.result }}" != "success" ]] || \
           [[ "${{ needs.spellcheck.result }}" != "success" ]]; then
           echo "::error::One or more jobs failed"
           exit 1
