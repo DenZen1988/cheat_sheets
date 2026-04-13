@@ -1,5 +1,7 @@
 # Cheat Sheet Collection
 
+[![Validation](https://github.com/DenZen1988/cheat_sheets/actions/workflows/ci.yml/badge.svg)](https://github.com/DenZen1988/cheat_sheets/actions/workflows/ci.yml)
+
 This is a simple cheat sheet collection of things I use and which might come in handy from time to time.
 
 ## Available Cheat Sheets
