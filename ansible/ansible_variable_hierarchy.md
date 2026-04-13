@@ -34,7 +34,7 @@ Defined in `group_vars/webservers.yml`:
 http_port 80
 ```
 
-Derfined in `host_vars/special-server.yml`:
+Defined in `host_vars/special-server.yml`:
 
 ```yaml
 http_port: 8080  # Overrides group_vars
