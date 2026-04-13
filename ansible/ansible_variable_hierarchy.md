@@ -8,7 +8,7 @@ Here is a short explanation of how the variable hierarchy works in ansible.
 ## The hierarchy in order
 
 1. Default Var (defined in the role at `defaults/main.yml`)
-Can be overriden by group_vars & host_vars
+Can be overridden by group_vars & host_vars
 2. Task Var (defined on the individual task)
 A variable defined within a task always beats any other variable
 3. Block Var (defined in the block)
@@ -18,14 +18,14 @@ A variable defined in a role overrides group_vars & host_vars
 5. Host Var
 A variable defined in the host_vars overrides the group_vars
 6. Group Var
-Defines variables for groups and can basically overriden by any variable above
+Defines variables for groups and can basically overridden by any variable above
 
 ## Example
 
 Defined in `roles/nginx/defaults.yml`:
 
 ```yaml
-http_port: 123  # Can be overriden by host_vars & group_vars - best alternative to role variables
+http_port: 123  # Can be overridden by host_vars & group_vars - best alternative to role variables
 ```
 
 Defined in `group_vars/webservers.yml`:

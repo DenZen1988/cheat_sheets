@@ -246,7 +246,7 @@ echo {{ country }}
 
 ### Appending Variables
 
-If you have two single variables liek this:
+If you have two single variables like this:
 
 ```yaml
 foo: 'value_of_foo'
@@ -270,7 +270,7 @@ echo {{ country }}
 
 ## Using Raw so characters will not be interpreted by Jinja2
 
-Sometimes you will find edge cases by jinja interpeting characters but you do not want it to. Let's say you have a string like this:
+Sometimes you will find edge cases by jinja interpreting characters but you do not want it to. Let's say you have a string like this:
 
 ```text
 FOO=${#BAR[@]}

@@ -118,7 +118,7 @@ Examples of different headings:
 
 ### Bold
 
-**Bold** text can be easily implemeted like this:
+**Bold** text can be easily implemented like this:
 
 ```markdown
 **Bold Text** can be used like this!
@@ -126,7 +126,7 @@ Examples of different headings:
 
 ### Italic
 
-*Italic* text can be implemeted like this:
+*Italic* text can be implemented like this:
 
 ```markdown
 *Italic Text can be used like this!
@@ -195,7 +195,7 @@ This link will lead to [google.de](https://google.de)!
 
 ### Inline Links
 
-An inline Link would look like this: <https://google.com> It can be implemeted with brackets like this:
+An inline Link would look like this: <https://google.com> It can be implemented with brackets like this:
 
 ```markdown
 Here is an inline link: <https://google.com>
